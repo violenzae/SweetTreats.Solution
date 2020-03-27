@@ -1,6 +1,7 @@
 body {
   text-align: center;
   flex-shrink: 0;
+  background-color: rgb(252, 216, 222);
 }
 
 a {
@@ -9,7 +10,7 @@ a {
 }
 
 .melt {
-  height: 100px;
+  height: 15%;
   background-image: url('../img/melt.png');
   background-repeat: repeat-x;
   background-size: contain;
@@ -22,7 +23,6 @@ a {
 }
 
 #berry {
-  /* height: 100%; */
   background-image: url('../img/berry.png');
   background-repeat: no-repeat;
   background-size: contain;
