@@ -35,6 +35,10 @@ a {
   flex-grow: 1;
 }
 
+#content{
+  margin: auto;
+}
+
 .container{
   height: 100%;
 }
