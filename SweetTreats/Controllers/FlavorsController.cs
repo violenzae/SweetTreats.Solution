@@ -17,7 +17,7 @@ namespace SweetTreats.Controllers
     private readonly SweetTreatsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
+    public FlavorsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -43,7 +43,7 @@ namespace SweetTreats.Controllers
       _db.Flavors.Add(flavor);
       if (TreatId != 0)
       {
-        _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.flavorId });
+        _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -70,7 +70,7 @@ namespace SweetTreats.Controllers
       {
         _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorId });
       }
-      _db.Entry(treat).State = EntityState.Modified;
+      _db.Entry(flavor).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
