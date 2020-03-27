@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SweetTreats.Models;
+//new code
 using Microsoft.AspNetCore.Identity;
 
 namespace SweetTreats
@@ -29,10 +30,10 @@ namespace SweetTreats
         .AddDbContext<SweetTreatsContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
+      //new code
       services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<SweetTreatsContext>()
-              .AddDefaultTokenProviders();
-
+                .AddEntityFrameworkStores<SweetTreatsContext>()
+                .AddDefaultTokenProviders();
     }
 
     public void Configure(IApplicationBuilder app)
@@ -41,6 +42,7 @@ namespace SweetTreats
 
       app.UseDeveloperExceptionPage();
 
+      //new code
       app.UseAuthentication();
 
       app.UseMvc(routes =>

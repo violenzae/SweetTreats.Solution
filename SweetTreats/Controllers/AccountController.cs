@@ -12,7 +12,7 @@ namespace SweetTreats.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, SweetTreatsContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, SweetTreatsContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
@@ -30,7 +30,7 @@ namespace SweetTreats.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Register (RegisterViewModel model)
+    public async Task<ActionResult> Register(RegisterViewModel model)
     {
       var user = new ApplicationUser { UserName = model.Email };
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
@@ -42,8 +42,7 @@ namespace SweetTreats.Controllers
       {
         return View();
       }
-    } 
-
+    }
     public ActionResult Login()
     {
       return View();
