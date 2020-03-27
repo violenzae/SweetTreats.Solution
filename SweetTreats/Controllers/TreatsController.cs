@@ -12,12 +12,12 @@ using System.Security.Claims;
 namespace SweetTreats.Controllers
 {
 
-  public class ItemsController : Controller
+  public class TreatsController : Controller
   {
     private readonly SweetTreatsContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public ItemsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, SweetTreatsContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -27,6 +27,26 @@ namespace SweetTreats.Controllers
     {
       List<Treat> model = _db.Treats.OrderBy(x => x.Name).ToList();
       return View(model);
+    }
+
+    [Authorize]
+    public ActionResult Create()
+    {
+      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
+      return View();
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<ActionResult> Create(Treat treat, int FlavorId)
+    {
+      _db.Treats.Add(treat);
+      if (FlavorId != 0)
+      {
+        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
