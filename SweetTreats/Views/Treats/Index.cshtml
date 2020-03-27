@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SweetTreats.Models;
+@model IEnumerable<SweetTreats.Models.Treat>;
+
+<h1>All Treats</h1>
+<p>Click a treat to see the flavor's it's available in.</p>
+<hr />
+<div class="box">
+  @if(@Model.Any())
+  {
+    @foreach (Treat treat in Model)
+    {
+      <h3>@Html.ActionLink($"{treat.Name}", "Details", new {id = treat.TreatId})</h3>
+    }
+  }
+  else
+  {
+    <h3> No treats yet! </h3>
+  }
+</div>
+
+<p>@Html.ActionLink("Add a new Treat", "Create")</p>
