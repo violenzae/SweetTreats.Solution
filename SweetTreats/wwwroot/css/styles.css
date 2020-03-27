@@ -1,3 +1,43 @@
 body {
   text-align: center;
+  flex-shrink: 0;
+
+
 }
+
+.melt {
+  height: 100px;
+  background-image: url('../img/melt.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+}
+
+#berry2
+{
+  display: inline-block;
+  max-width: 50%;
+}
+
+#berry {
+  /* height: 100%; */
+  background-image: url('../img/berry.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+.row{
+  height: 100%;
+  flex-grow: 1;
+}
+
+.container{
+  height: 100%;
+}
+
+html,body { 
+  height:100%;
+  display: flex;
+  flex-direction: column;
+}
+
