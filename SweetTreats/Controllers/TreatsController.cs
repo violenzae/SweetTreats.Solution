@@ -29,16 +29,16 @@ namespace SweetTreats.Controllers
       return View(model);
     }
 
-    [Authorize]
+    // [Authorize]
     public ActionResult Create()
     {
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View();
     }
 
-    [Authorize]
+    // [Authorize]
     [HttpPost]
-    public async Task<ActionResult> Create(Treat treat, int FlavorId)
+    public ActionResult Create(Treat treat, int FlavorId)
     {
       _db.Treats.Add(treat);
       if (FlavorId != 0)
